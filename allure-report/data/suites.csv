@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","3497","Проверка заголовка страницы","","Wed Oct 15 12:05:49 MSK 2025","passed","Wed Oct 15 12:05:53 MSK 2025","","tests/example.spec.js","",""
+"","6949","Логин, добавление товара в корзину и проверка бейджа","","Wed Oct 15 12:05:49 MSK 2025","passed","Wed Oct 15 12:05:56 MSK 2025","","tests/saucedemo.spec.js","",""

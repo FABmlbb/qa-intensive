@@ -1,0 +1,1 @@
+[{"uid":"f61beae46b6df67f","name":"Логин, добавление товара в корзину и проверка бейджа","time":{"start":1760519149670,"stop":1760519156619,"duration":6949},"status":"passed","severity":"normal"},{"uid":"203bf6fe6b2347fb","name":"Проверка заголовка страницы","time":{"start":1760519149672,"stop":1760519153169,"duration":3497},"status":"passed","severity":"normal"}]

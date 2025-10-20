@@ -1,0 +1,18 @@
+stages: [test]
+
+variables:
+  CI: "true"
+
+ui-tests:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.56.0-jammy
+  before_script:
+    - npm ci
+  script:
+    - npx playwright test tests/saucedemo.spec.js --reporter=html,line --retries=1
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - playwright-report/
+      - test-results/
