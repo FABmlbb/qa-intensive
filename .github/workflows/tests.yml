@@ -4,10 +4,12 @@ on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
 
 jobs:
   e2e:
     runs-on: ubuntu-latest
+
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
       USERNAME: ${{ secrets.LOGIN }}
@@ -19,41 +21,27 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
-        with:
-          node-version: '20'
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-
-      - name: Run tests
-        run: npx playwright test tests/saucedemo.spec.js --reporter=html,line --retries=1
-
-      - name: Generate Allure report
-        run: npx allure generate allure-results --clean -o allure-report
-
-      - name: Upload Allure report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-          retention-days: 7
+      - name: Run Playwright tests
+        run: npx playwright test
 
       - name: Upload Playwright report
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: playwright-report
-          retention-days: 7
+          path: playwright-report/
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report/
 
       - name: Upload traces
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: traces
-          path: test-results/**/trace.zip
-          retention-days: 7
+          path: test-results/
